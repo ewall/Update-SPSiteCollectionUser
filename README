@@ -1,0 +1,35 @@
+<#
+
+Update-SPSiteCollectionUser.ps1 -- by Eric Wallace <e@ewall.org>, 2013-04-17
+
+
+.SYNOPSIS
+User a user's DisplayName and Email fields in every SharePoint site collection.
+
+Requires SharePoint management snapin.
+
+
+.NOTES
+
+In SharePoint, each site collection stores its own table of user data. When the
+user accounts are updated in Active Directory, SharePoint's User Profile Service
+application will automatically update the user profile used by the non-free
+features, but only site collections where the user is "active" (i.e. recently
+edited something, not just read it) will get updated.
+
+If the user has a name change and their AD account and email address are
+it can be disconcerting when one SharePoint page shows their new name and email
+while another shows the old one. This script exists to help you quickly update
+the old DisplayName and Email fields so the user doesn't worry.
+
+Please read carefully before deciding to use this; it *will* make changes to
+your SharePoint user data! (Of course, if you want to "undo" you can just run
+the command again and put the old info back in.) So far I have only tested this
+with SharePoint 2010.
+
+  
+.HISTORY
+
+2013-04-17 initial release
+
+#>
